@@ -25,13 +25,6 @@ export default function Navbar(){
                                 <Button variant="ghost" className="text-gray-700 hover:text-black">Dashboard</Button>
                             </Link>
                             <DropdownMenu>
-                                {/* <DropdownMenuTrigger>
-                                    <Button variant="ghost">
-                                        <Avatar className="bg-primary text-white">
-                                            <AvatarFallback>{session.user.name[0].toUpperCase()}</AvatarFallback>
-                                        </Avatar>
-                                    </Button>
-                                </DropdownMenuTrigger> */}
                                 <DropdownMenuTrigger className="inline-flex h-8 w-8 items-center justify-center rounded-lg hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
                                         <Avatar className="bg-primary text-white">
                                             <AvatarFallback>{session.user.name[0].toUpperCase()}</AvatarFallback>
