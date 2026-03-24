@@ -8,6 +8,7 @@ import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { useState } from "react";
 import { createJobApplication } from "@/lib/actions/job-applications";
+import { useRouter } from "next/navigation";
 
 interface CreateJobApplicationDialogProps{
     columnId: string;
@@ -28,6 +29,7 @@ const INITIAL_FORM_DATA = {
 export default function CreateJobApplicationDialog({columnId, boardId} : CreateJobApplicationDialogProps){
     const [open, setOpen] = useState <boolean> (false);
     const [formData, setFormData] = useState(INITIAL_FORM_DATA);
+    const router = useRouter();
 
     async function handleSubmit(e: React.FormEvent){
         e.preventDefault();
@@ -45,11 +47,12 @@ export default function CreateJobApplicationDialog({columnId, boardId} : CreateJ
             if (!result.error){
                 setFormData(INITIAL_FORM_DATA);
                 setOpen(false);
+                router.refresh();
             } else{
                 console.error("Failed to create job: ", result.error);
             }
         } catch (err){
-            console.error(err)
+            console.error("handleSubmit error:", err);
         }
     }
 
